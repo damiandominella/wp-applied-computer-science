@@ -1,0 +1,28 @@
+@mixin socials($height) {
+    $iconMargin: 5px;
+    $iconSize: #{$topbarHeight - $iconMargin*2};
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    >li {
+        padding: $iconMargin 0;
+        margin: 0 $iconMargin 0 0;
+        display: inline-block;
+
+        >a {
+            width: $iconSize;
+            height: $iconSize;
+            background: $textOnAccent;
+            color: $accent;
+            border-radius: 50%;
+            font-size: 12px;
+            display: block;
+            text-align: center;
+
+            >i {
+                line-height: $iconSize;
+            }
+        }
+    }
+}

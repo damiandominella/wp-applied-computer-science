@@ -1,0 +1,7 @@
+@mixin _transition($style) {
+    -webkit-transition: $style;
+    -moz-transition: $style;
+    -ms-transition: $style;
+    -o-transition: $style;
+    transition: $style;
+}

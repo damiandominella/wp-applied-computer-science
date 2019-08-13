@@ -21,38 +21,43 @@
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'applied-computer-science' ); ?></a>
-
 	<header id="header" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$applied_computer_science_description = get_bloginfo( 'description', 'display' );
-			if ( $applied_computer_science_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $applied_computer_science_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+		<!-- Topbar (for socials etc...) -->
+		<div class="topbar">
+			<ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                <li><a href="#"><i class="fab fa-foursquare"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="#"><i class="fas fa-rss"></i></a></li>
+            </ul>
+		</div>
+		<!-- Topbar -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'applied-computer-science' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #header -->
+	    <!-- Logo and menu wrapper -->
+		<div class="logo-menu-wrapper">
+			<img id="logo" src="<?php echo home_url('assets/logo_sti_new.png') ?>" alt="Logo">
+			<div class="menu-toggler">
+                <i class="fas fa-bars"></i>
+			</div>
+			<div class="menu">
+				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>
+			</div>
+		</div>
+		<!-- Logo and menu wrapper -->
+
+		<!-- Sidebar menu (for mobile) -->
+		<div class="sidebar-menu">
+			<div class="menu">
+				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>
+			</div>
+		</div>
+		<!-- Sidebar menu -->
+
+		<img class="main-logo" src="<?php echo home_url('assets/logo_sti_new.png') ?>" alt="Logo">
+	</header>
 
 	<div id="content" class="site-content">

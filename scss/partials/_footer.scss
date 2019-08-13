@@ -1,0 +1,14 @@
+footer#footer {
+    background: $primary;
+    color: $textOnPrimary;
+
+    > div.copyright {
+        text-align: center;
+        padding: 20px 0;
+        p {
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+
+}

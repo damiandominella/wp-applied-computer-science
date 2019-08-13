@@ -1,5 +1,55 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap');
+@import './_variables.scss';
+@import './mixins/_responsive.scss';
+@import './mixins/_socials.scss';
+@import './mixins/_transition.scss';
+@import './partials/_header.scss';
+@import './partials/_footer.scss';
 
 body {
     font-family: 'Nunito', sans-serif;
+    font-weight: $fontWeightLight;
+}
+
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    ul.socials {
+        @include socials($topbarHeight);
+    }
+
+    a {
+        font-weight: $fontWeightRegular;
+        color: $accent;
+        text-decoration: none;
+        &:active, &:focus, &:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+        &:hover {
+            color: lighten($accent, 10);
+        }
+    }
+
+    div#page {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    #header {
+        grid-area: header;
+    }
+
+    #content {
+        grid-area: main;
+    }
+
+    #footer {
+        grid-area: footer;
+    }
 }

@@ -14,19 +14,9 @@
 	</div><!-- #content -->
 
 	<footer id="footer" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'applied-computer-science' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'applied-computer-science' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'applied-computer-science' ), 'applied-computer-science', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+		<div class="copyright">
+			<p>&copy; <?php echo date('Y'); ?> | Developed with <i class="fas fa-heart"></i> by <a href="#">Damian Dominella</a></p>
+		</div>
 	</footer><!-- #footer -->
 </div><!-- #page -->
 

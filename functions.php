@@ -123,9 +123,14 @@ function applied_computer_science_scripts() {
 	wp_enqueue_style( 'applied-computer-science-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'applied-computer-science-css', get_template_directory_uri() . '/css/styles.min.css');
 
-	wp_enqueue_script( 'applied-computer-science-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// wp_enqueue_script( 'applied-computer-science-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// wp_enqueue_script( 'applied-computer-science-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	
+	wp_enqueue_script('jquery');
+	wp_enqueue_script( 'applied-computer-science-js', get_template_directory_uri() . '/js/applied-computer-science.js');
 
-	wp_enqueue_script( 'applied-computer-science-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	// Fontawesome 5.x
+	wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/b868260b9e.js');
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -160,3 +165,19 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function get_main_menu() {
+	// display the wp3 menu if available
+    wp_nav_menu(array( 
+    	'container' => false,                           // remove nav container
+    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
+    	'menu' => 'The Main Menu',                           // nav name
+    	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
+    	//'theme_location' => 'main-nav',                 // where it's located in the theme
+    	'before' => '',                                 // before the menu
+        'after' => '',                                  // after the menu
+        'link_before' => '',                            // before each link
+        'link_after' => '',                             // after each link
+        'depth' => 0,                                   // limit the depth of the nav
+    	//'fallback_cb' => 'bones_main_nav_fallback'      // fallback function
+	));
+}
