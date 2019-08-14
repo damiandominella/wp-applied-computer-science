@@ -1,6 +1,9 @@
 jQuery(window).on("load", function () {
     jQuery(window).scroll(function () {
         jQuery('div.logo-menu-wrapper').toggleClass("scrolling", (jQuery(window).scrollTop() > 100));
+
+        jQuery('div.logo-menu-wrapper').toggleClass("show-logo", (jQuery(window).scrollTop() > 200));
+        jQuery('article header').toggleClass("scrolling", (jQuery(window).scrollTop() > 200));
     });
 });
 

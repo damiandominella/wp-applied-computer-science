@@ -1,10 +1,11 @@
 header#header {
     >div.topbar {
         height: $topbarHeight;
-        background: $accent;
+        background: $primary;
         position: fixed;
         top: 0;
         width: 100%;
+
         @include respond-to(xs) {
             display: none;
         }
@@ -15,6 +16,7 @@ header#header {
     >div.logo-menu-wrapper {
         display: grid;
         align-items: center;
+        background: #fff;
 
         @include respond-to(xs) {
             grid-template-columns: 80% 20%;
@@ -77,8 +79,8 @@ header#header {
                         line-height: $menuHeight;
                         padding: 0 15px;
                         color: $primary;
-                        font-size: 16px;
-                        font-weight: $fontWeightBold;
+                        font-size: 15px;
+                        font-weight: $fontWeightRegular;
                     }
 
                     &:hover,
@@ -144,16 +146,14 @@ header#header {
                 }
             }
         }
-
-        position: fixed;
-
-        top: 30px;
         @include respond-to(xs) {
             top: 0;
         }
+
+        position: fixed;
+        top: 30px;
         left: 0;
         height: $menuHeight;
-        background: #fff;
         width: 100%;
         z-index: 10;
         border-bottom: 1px solid #ddd;
@@ -161,6 +161,7 @@ header#header {
 
         &.scrolling {
             @include respond-to(from-sm) {
+                background: #fff;
                 top: 0;
                 box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
                 border-bottom: 1px solid transparent;
@@ -174,8 +175,8 @@ header#header {
         }
 
         display: block;
-        max-width: 600px;
-        margin: #{$menuHeight + $topbarHeight} auto 0;
+        max-width: 540px;
+        margin: #{$menuHeight + $topbarHeight + 20px} auto 0;
     }
 
     >div.sidebar-menu {
@@ -220,7 +221,7 @@ header#header {
                         display: block;
                         padding: 10px 15px;
                         color: $textOnPrimary;
-                        font-size: 16px;
+                        font-size: 15px;
                         font-weight: $fontWeightRegular;
                     }
 
@@ -246,7 +247,7 @@ header#header {
                             position: relative;
 
                             a {
-                                font-size: 15px;
+                                font-size: 14px;
                             }
                         }
                     }
@@ -262,6 +263,6 @@ header#header {
             right: 0;
             width: 100%;
         }
-    
+
     }
 }

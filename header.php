@@ -72,7 +72,7 @@
 		</div>
 		<!-- Sidebar menu -->
 
-		<img class="main-logo" src="<?php echo home_url('assets/logo_sti_new.png') ?>" alt="Logo">
+		<!-- <img class="main-logo" src="<?php echo home_url('assets/logo_sti_new.png') ?>" alt="Logo"> -->
 	</header>
 
 	<div id="content" class="site-content">

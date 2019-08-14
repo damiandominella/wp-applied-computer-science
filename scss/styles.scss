@@ -1,15 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap');
 @import './_variables.scss';
+@import './partials/_fonts.scss';
 @import './mixins/_responsive.scss';
 @import './mixins/_socials.scss';
 @import './mixins/_transition.scss';
 @import './mixins/_fa_icon.scss';
 @import './partials/_header.scss';
 @import './partials/_footer.scss';
+@import './partials/_card.scss';
+@import './partials/_article.scss';
+
+@import './pages/_homepage.scss';
+@import './pages/_bulletin-board.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
 
 body {
-    font-family: 'Nunito', sans-serif;
+    // font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
     font-weight: $fontWeightLight;
+    font-size: 15px;
+    line-height: 1.4;
 }
 
 body {
@@ -24,10 +34,15 @@ body {
         font-weight: $fontWeightRegular;
         color: $accent;
         text-decoration: none;
-        &:active, &:focus, &:visited {
+
+        &:active,
+        &:focus,
+        &:visited {
             text-decoration: none;
             color: inherit;
+            outline: none;
         }
+
         &:hover {
             color: lighten($accent, 10);
         }
@@ -40,6 +55,8 @@ body {
             "header"
             "main"
             "footer";
+        grid-template-rows: auto 1fr auto;
+        height: 100vh;
     }
 
     #header {
@@ -48,9 +65,32 @@ body {
 
     #content {
         grid-area: main;
+
+        @include respond-to(xs) {
+            padding-top: 60px;
+        }
+        @include respond-to(from-sm) {
+            padding-top: 110px;
+        }
     }
 
     #footer {
         grid-area: footer;
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: auto;
+        margin-left: auto;
+
+        @include respond-to(from-sm) {
+            max-width: 720px;
+        }
+
+        @include respond-to(from-md) {
+            max-width: 850px;
+        }
     }
 }

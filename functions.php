@@ -181,3 +181,69 @@ function get_main_menu() {
     	//'fallback_cb' => 'bones_main_nav_fallback'      // fallback function
 	));
 }
+
+// Shortcodes
+function get_last_bulletin_posts( $atts ){
+	$a = shortcode_atts( array(
+		'num_posts' => '5',
+	), $atts );
+
+	$num_posts = (int)$a['num_posts'];
+
+	$query = new WP_Query(array(
+		'post_type' => 'bulletin_board',
+		'posts_per_page' => $num_posts,
+		'meta_query' => array(
+			array(
+				'key ' => 'expiry_date',
+				'value' => date('Ymd'),
+				'compare' => '>=',
+				'type' => 'DATE'
+			)
+		)
+	));
+
+	$output = '';
+
+	while ( $query->have_posts() ) :
+		ob_start();
+		$query->the_post();
+		include 'template-parts/card.php';
+		$output .= ob_get_contents();
+		ob_end_clean();
+	endwhile;
+
+	return $output;
+}
+add_shortcode( 'last_bulletin_posts', 'get_last_bulletin_posts' );
+
+function get_bulletin_board() {
+
+	$query = new WP_Query(array(
+		'post_type' => 'bulletin_board',
+		'posts_per_page' => -1,
+		'meta_query' => array(
+			array(
+				'key ' => 'expiry_date',
+				'value' => date('Ymd'),
+				'compare' => '>=',
+				'type' => 'DATE'
+			)
+		)
+	));
+
+	$output = '<div class="bulletin-board">';
+
+	while ( $query->have_posts() ) :
+		ob_start();
+		$query->the_post();
+		include 'template-parts/article.php';
+		$output .= ob_get_contents();
+		ob_end_clean();
+	endwhile;
+
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode('bb_archive', 'get_bulletin_board');

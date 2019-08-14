@@ -1,0 +1,55 @@
+article {
+    header {
+        @include _transition(all 0.3s);
+        &.scrolling {
+            position: fixed;
+            width: 100%;
+            background: #fff;
+            top: 0;
+            height: 80px;
+            z-index: 12;
+        }
+    }
+}
+
+div.article {
+    background: #fff;
+    border-bottom: 1px solid $lightGrey;
+    padding-bottom: 30px;
+
+    >.title {
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        a {
+            color: $primary;
+            font-weight: $fontWeightBold;
+            &:hover {
+                color: $accent;
+            }
+        }
+    }
+
+    >.info {
+        color: $grey;
+        font-size: 12px;
+        >span {
+            &.date {}
+
+            &.author {}
+
+            &.expiry {
+
+            }
+        }
+    }
+
+    >.content {
+        font-size: 16px;
+        word-break: break-word;
+
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
