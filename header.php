@@ -51,9 +51,24 @@
 
 		<!-- Sidebar menu (for mobile) -->
 		<div class="sidebar-menu">
+			<div class="menu-toggler">
+                <i class="fas fa-times"></i>
+			</div>
 			<div class="menu">
 				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>
 			</div>
+			<!-- Topbar (for socials etc...) -->
+			<div class="topbar">
+				<ul class="socials">
+             	   <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+             	   <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+             	   <li><a href="#"><i class="fab fa-skype"></i></a></li>
+             	   <li><a href="#"><i class="fab fa-foursquare"></i></a></li>
+              	  <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+              	  <li><a href="#"><i class="fas fa-rss"></i></a></li>
+            	</ul>
+			</div>
+		<!-- Topbar -->
 		</div>
 		<!-- Sidebar menu -->
 
