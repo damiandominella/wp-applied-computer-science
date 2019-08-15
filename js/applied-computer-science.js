@@ -2,8 +2,10 @@ jQuery(window).on("load", function () {
     jQuery(window).scroll(function () {
         jQuery('div.logo-menu-wrapper').toggleClass("scrolling", (jQuery(window).scrollTop() > 100));
 
-        jQuery('div.logo-menu-wrapper').toggleClass("show-logo", (jQuery(window).scrollTop() > 200));
-        jQuery('article header').toggleClass("scrolling", (jQuery(window).scrollTop() > 200));
+        if (window.innerWidth > 767) {
+            jQuery('div.logo-menu-wrapper').toggleClass("show-logo", (jQuery(window).scrollTop() > 200));
+            jQuery('main').find('header:first').toggleClass("scrolling", (jQuery(window).scrollTop() > 200));
+        }
     });
 });
 
@@ -17,8 +19,8 @@ jQuery(document).ready(function () {
         jQuery('div.sidebar-menu').removeClass('open');
     });
 
-    jQuery('ul>li.menu-item-has-children').on("click", function () {
-        console.log('passo');
-        jQuery(this).find('ul.sub-menu').slideToggle();
+    jQuery('ul>li.menu-item-has-children').on("click", function (event) {
+        jQuery(this).children('ul.sub-menu:first').slideToggle();
+        event.stopPropagation();
     });
 });

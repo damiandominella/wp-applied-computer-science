@@ -130,8 +130,9 @@ function applied_computer_science_scripts() {
 	wp_enqueue_script( 'applied-computer-science-js', get_template_directory_uri() . '/js/applied-computer-science.js');
 
 	// Fontawesome 5.x
-	wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/b868260b9e.js');
-
+	wp_enqueue_style('fontawesome-style',
+	'https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -165,12 +166,12 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-function get_main_menu() {
+function get_main_menu($lang = 'IT') {
 	// display the wp3 menu if available
     wp_nav_menu(array( 
     	'container' => false,                           // remove nav container
     	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => 'The Main Menu',                           // nav name
+    	'menu' => 'Menu '.$lang,                           // nav name
     	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
     	//'theme_location' => 'main-nav',                 // where it's located in the theme
     	'before' => '',                                 // before the menu
@@ -247,3 +248,9 @@ function get_bulletin_board() {
 	return $output;
 }
 add_shortcode('bb_archive', 'get_bulletin_board');
+
+// Fallback functions for retrocompatibility
+function sti_comment_shortcode($atts, $content) {
+    return '';
+}
+add_shortcode('comment', 'sti_comment_shortcode');

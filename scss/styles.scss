@@ -4,10 +4,12 @@
 @import './mixins/_socials.scss';
 @import './mixins/_transition.scss';
 @import './mixins/_fa_icon.scss';
+@import './mixins/_transform.scss';
 @import './partials/_header.scss';
 @import './partials/_footer.scss';
 @import './partials/_card.scss';
 @import './partials/_article.scss';
+@import './partials/_tables.scss';
 
 @import './pages/_homepage.scss';
 @import './pages/_bulletin-board.scss';
@@ -18,11 +20,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 
     font-weight: $fontWeightLight;
-    font-size: 15px;
-    line-height: 1.4;
-}
+    font-size: 14px;
+    line-height: 1.5;
 
-body {
     padding: 0 !important;
     margin: 0 !important;
 
@@ -39,7 +39,7 @@ body {
         &:focus,
         &:visited {
             text-decoration: none;
-            color: inherit;
+            color: $accent;
             outline: none;
         }
 
@@ -90,7 +90,19 @@ body {
         }
 
         @include respond-to(from-md) {
-            max-width: 850px;
+            max-width: 920px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        > a {
+            font-weight: $fontWeightBold;
         }
     }
 }

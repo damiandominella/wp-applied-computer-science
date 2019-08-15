@@ -51,8 +51,9 @@
 
 		<!-- Sidebar menu (for mobile) -->
 		<div class="sidebar-menu">
+			<h1><?php echo get_bloginfo();?></h1>
 			<div class="menu-toggler">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-bars"></i>
 			</div>
 			<div class="menu">
 				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>

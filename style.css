@@ -653,32 +653,6 @@ textarea {
 # Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-    color: royalblue;
-}
-
-a:visited {
-    color: purple;
-}
-
-a:hover,
-a:focus,
-a:active {
-    color: midnightblue;
-}
-
-a:focus {
-    outline: thin dotted;
-}
-
-a:hover,
-a:active {
-    outline: 0;
-}
-
-/*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation {
@@ -891,7 +865,7 @@ a:active {
 
 .post,
 .page {
-    margin: 0 0 1.5em;
+    margin: 0;
 }
 
 .updated:not(.published) {
@@ -901,12 +875,12 @@ a:active {
 .page-content,
 .entry-content,
 .entry-summary {
-    margin: 1.5em 0 0;
+    margin: 0;
 }
 
 .page-links {
     clear: both;
-    margin: 0 0 1.5em;
+    margin: 0;
 }
 
 /*--------------------------------------------------------------
