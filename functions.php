@@ -16,14 +16,6 @@ if ( ! function_exists( 'applied_computer_science_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function applied_computer_science_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on applied-computer-science, use a find and replace
-		 * to change 'applied-computer-science' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'applied-computer-science', get_template_directory() . '/languages' );
-
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
@@ -41,11 +33,6 @@ if ( ! function_exists( 'applied_computer_science_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'applied-computer-science' ),
-		) );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -67,18 +54,6 @@ if ( ! function_exists( 'applied_computer_science_setup' ) ) :
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		) );
 	}
 endif;
 add_action( 'after_setup_theme', 'applied_computer_science_setup' );
@@ -138,33 +113,6 @@ function applied_computer_science_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'applied_computer_science_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
 function get_main_menu($lang = 'IT') {
 	// display the wp3 menu if available
@@ -249,8 +197,66 @@ function get_bulletin_board() {
 }
 add_shortcode('bb_archive', 'get_bulletin_board');
 
+function get_seminars() {
+    $query = new WP_Query(array(
+		'post_type' => 'seminars',
+		'posts_per_page' => -1,
+		// 'meta_query' => array(
+		// 	array(
+		// 		'key ' => 'expiry_date',
+		// 		'value' => date('Ymd'),
+		// 		'compare' => '>=',
+		// 		'type' => 'DATE'
+		// 	)
+		// )
+	));
+
+	$output = '<div class="seminars">';
+
+	while ( $query->have_posts() ) :
+		ob_start();
+		$query->the_post();
+		include 'template-parts/seminary.php';
+		$output .= ob_get_contents();
+		ob_end_clean();
+	endwhile;
+
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode('seminars', 'get_seminars');
+
 // Fallback functions for retrocompatibility
 function sti_comment_shortcode($atts, $content) {
     return '';
 }
 add_shortcode('comment', 'sti_comment_shortcode');
+
+
+function sti_col_shortcode($atts, $content) {
+    
+    extract(shortcode_atts(array(
+        'n' => '4',
+        'c' => ''
+	), $atts));
+	
+	$class = 'col col-' . $n;
+
+    if ($c)
+		$class .= ' ' . $c;
+    
+    $div = '<div class="' . $class . '">';
+            
+    return $div . do_shortcode(wpautop($content)) . '</div>';
+}
+add_shortcode('col', 'sti_col_shortcode');
+
+
+function sti_row_shortcode($atts, $content) {
+        
+    // $content = str_replace(array("<br />", "<br>", "<p></p>"), '', $content);
+    
+    return '<div class="row">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('row', 'sti_row_shortcode');

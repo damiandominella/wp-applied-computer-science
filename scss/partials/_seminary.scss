@@ -1,0 +1,27 @@
+div.seminary {
+    background: #fff;
+    border-bottom: 1px solid $lightGrey;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    &:first-child {
+        padding-top: 0;
+    }
+
+    >.title {
+        margin-top: 0;
+        margin-bottom: 0px;
+        font-size: 16px;
+        a {
+            color: $primary;
+            font-weight: $fontWeightBold;
+            &:hover {
+                color: $accent;
+            }
+        }
+    }
+
+    >.info {
+        color: $grey;
+        font-size: 12px;
+    }
+}

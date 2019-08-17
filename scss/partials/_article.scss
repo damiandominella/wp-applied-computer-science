@@ -1,12 +1,16 @@
 div.article {
     background: #fff;
     border-bottom: 1px solid $lightGrey;
+    padding-top: 30px;
     padding-bottom: 30px;
 
+    &::first-child {
+        padding-top: 0;
+    }
+
     >.title {
-        font-size: 24px;
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         a {
             color: $primary;
             font-weight: $fontWeightBold;
@@ -30,9 +34,21 @@ div.article {
         }
     }
 
+    >.tags {
+        margin-top: 5px;
+        font-size: 11px;
+        a {
+            font-weight: $fontWeightMedium;
+        }
+    }
+
     >.content {
         font-size: 14px;
         word-break: break-word;
+
+        h3 {
+            font-size: 18px;
+        }
 
         *:last-child {
             margin-bottom: 0;

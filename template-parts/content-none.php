@@ -12,6 +12,7 @@
 <section class="no-results not-found">
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'applied-computer-science' ); ?></h1>
+		<span class="blog-name"><?php echo get_bloginfo();?></span>
 	</header><!-- .page-header -->
 
 	<div class="page-content">

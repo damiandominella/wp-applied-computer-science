@@ -9,31 +9,45 @@
 
 get_header();
 ?>
-
 	<div id="primary" class="content-area">
+	<div class="container">
 		<main id="main" class="site-main">
+
+		<?php if (is_category()) { ?>
+        <?php $title = single_cat_title('', false); ?>
+
+    <?php } elseif (is_tag()) { ?> 
+        <?php $title = __("Post Taggati:", "applied-computer-science") . ' ' . single_tag_title('', false); ?>
+
+    <?php } elseif (is_author()) { ?>
+        <?php the_post(); ?>
+        <?php $title = __("Posts By Author:", "applied-computer-science") . ' ' . get_the_author(); ?>
+        <?php rewind_posts(); ?>
+
+    <?php } elseif (is_day()) { ?>
+        <?php $title = __("Daily Archives:", "applied-computer-science") . ' ' . the_time('l, F j, Y'); ?>
+
+    <?php } elseif (is_month()) { ?>
+        <?php $title = __("Monthly Archives:", "applied-computer-science") . ' ' . the_time('F Y'); ?>
+
+    <?php } elseif (is_year()) { ?>
+        <?php $title = __("Yearly Archives:", "applied-computer-science") . ' ' . the_time('Y'); ?>
+    <?php } ?>
+
+
+		<header class="entry-header">
+			<h1 class="entry-title"><?php echo $title; ?></h1>
+			<span class="blog-name"><?php echo get_bloginfo();?></span>
+		</header><!-- .entry-header -->
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				// the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
+				get_template_part( 'template-parts/article', get_post_type() );
 			endwhile;
 
 			the_posts_navigation();
@@ -44,7 +58,7 @@ get_header();
 
 		endif;
 		?>
-
+</div> <!-- #container -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

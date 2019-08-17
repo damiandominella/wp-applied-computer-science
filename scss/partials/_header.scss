@@ -11,30 +11,31 @@ header#header {
         }
     }
 
-    $menuHeight: 80px;
-
     >div.logo-menu-wrapper {
         display: grid;
         align-items: center;
         background: #fff;
 
+
         @include respond-to(xs) {
-            grid-template-columns: 80% 20%;
+            padding: 0 10px 0 5px;
+            grid-template-columns: 80px calc(100% - 80px);
+
+            top: 0;
             height: 60px;
 
             >div.menu {
                 display: none;
             }
 
-            >img {
-                max-width: 100%;
-                display: block;
-                max-height: 50px;
+            >div.logo {
+                a {
+                    display: flex;
+                }
             }
 
             >div.menu-toggler {
                 justify-self: end;
-                padding-right: 10px;
                 cursor: pointer;
 
                 i {
@@ -45,13 +46,20 @@ header#header {
         }
 
         @include respond-to(from-sm) {
+            padding: 0 10px;
+            grid-template-columns: 100px calc(100% - 100px);
+
             >div.menu {
                 grid-row: 1;
-                justify-self: center;
+                justify-self: end;
             }
 
-            >img {
-                display: none;
+            >div.logo {
+                grid-row: 1;
+
+                a {
+                    display: flex;
+                }
             }
 
             >div.menu-toggler {
@@ -61,13 +69,13 @@ header#header {
 
 
         >div.menu {
-            height: $menuHeight;
+            height: $navBarHeight;
 
             >ul {
                 padding: 0;
                 margin: 0;
                 list-style: none;
-                height: $menuHeight;
+                height: $navBarHeight;
 
                 li {
                     display: inline-block;
@@ -75,15 +83,19 @@ header#header {
 
                     a {
                         display: block;
-                        height: $menuHeight;
-                        line-height: $menuHeight;
+                        height: $navBarHeight;
+                        line-height: $navBarHeight;
                         padding: 0 12px;
                         color: $primary;
-                        font-size: 14px;
-                        font-weight: $fontWeightRegular;
+                        font-size: 13px;
+                        font-weight: $fontWeightMedium;
+
+                        &:hover {
+                            color: $accent;
+                        }
                     }
 
-                    &:hover,
+
                     &.current-menu-item {
                         >a {
                             color: $accent;
@@ -125,10 +137,10 @@ header#header {
                                 height: auto;
                                 line-height: inherit;
                                 font-size: 13px;
-                            }
 
-                            &:hover {
-                                background-color: #f5f5f5;
+                                &:hover {
+                                    background-color: #f5f5f5;
+                                }
                             }
 
                             ul.sub-menu {
@@ -147,14 +159,10 @@ header#header {
             }
         }
 
-        @include respond-to(xs) {
-            top: 0;
-        }
-
         position: fixed;
         top: 30px;
         left: 0;
-        height: $menuHeight;
+        height: $navBarHeight;
         width: 100%;
         z-index: 10;
         border-bottom: 1px solid #ddd;
@@ -177,23 +185,23 @@ header#header {
 
         display: block;
         max-width: 540px;
-        margin: #{$menuHeight + $topbarHeight + 20px} auto 0;
+        margin: #{$navBarHeight + $topbarHeight + 20px} auto 0;
     }
 
     >div.sidebar-menu {
         height: 100%;
         width: 100%;
         position: fixed;
-        z-index: 11;
+        z-index: 20;
         top: 0;
         right: -100%;
         background-color: #fff;
         overflow-x: hidden;
         @include _transition(right 0.4s);
 
-        > h1 {
+        >h1 {
             margin: 0;
-            font-size: 18px;
+            font-size: 15px;
             text-transform: uppercase;
             margin-left: 10px;
             height: 60px;
@@ -229,7 +237,7 @@ header#header {
                 margin: 0;
                 list-style: none;
 
-                > li {
+                >li {
                     &:hover {
                         >a {
                             background-color: #f5f5f5;
@@ -257,6 +265,7 @@ header#header {
                             color: $primary;
                         }
                     }
+
                     &.current-menu-item {
                         >a {
                             color: $accent;
@@ -296,27 +305,57 @@ header#header {
 main {
     header {
         @include _transition(all 0.3s);
+
         &.scrolling {
             position: fixed;
             width: 100%;
             background: #fff;
             top: 0;
-            height: 80px;
+            left: 70px; // depends on logo
+            height: $navBarHeight;
             z-index: 12;
+
             h1 {
-                font-size: 20px;
-                line-height: 80px;
-                margin: 0;
+                font-size: 18px;
+                margin: 13px 0 0 0;
                 border: none;
                 padding: 0;
+            }
+
+            @include respond-to(xs) {
+                height: 59px; // 1px border
+                left: 53px; // depends on logo
+                width: 100%;
+
+                h1 {
+                    font-size: 15px;
+                    margin-top: 12px;
+                    @include _ellipsis-multiline(1, 20px)
+                }
+
+                span.blog-name {
+                    font-size: 8px;
+                }
             }
         }
 
         h1 {
-            margin-top: 50px;
+            margin-top: 30px;
             padding-bottom: 20px;
             margin-bottom: 20px;
             border-bottom: 1px solid $lightGrey;
+        }
+
+        span.blog-name {
+            text-transform: uppercase;
+            color: $darkGrey;
+            font-size: 10px;
+            font-weight: $fontWeightRegular;
+            display: none;
+
+            &.visible {
+                display: block;
+            }
         }
     }
 }

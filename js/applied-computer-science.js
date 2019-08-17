@@ -2,10 +2,9 @@ jQuery(window).on("load", function () {
     jQuery(window).scroll(function () {
         jQuery('div.logo-menu-wrapper').toggleClass("scrolling", (jQuery(window).scrollTop() > 100));
 
-        if (window.innerWidth > 767) {
-            jQuery('div.logo-menu-wrapper').toggleClass("show-logo", (jQuery(window).scrollTop() > 200));
-            jQuery('main').find('header:first').toggleClass("scrolling", (jQuery(window).scrollTop() > 200));
-        }
+        jQuery('div.logo-menu-wrapper').toggleClass("show-logo", (jQuery(window).scrollTop() > 200));
+        jQuery('main').find('header:first').toggleClass("scrolling", (jQuery(window).scrollTop() > 200));
+        jQuery('main').find('header:first span.blog-name').toggleClass("visible", (jQuery(window).scrollTop() > 200));
     });
 });
 

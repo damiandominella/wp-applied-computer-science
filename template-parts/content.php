@@ -20,6 +20,7 @@
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 		?>
+		<span class="blog-name"><?php echo get_bloginfo();?></span>
 	</header><!-- .entry-header -->
 
 	<?php //applied_computer_science_post_thumbnail(); ?>

@@ -15,7 +15,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
 </head>
@@ -39,12 +38,12 @@
 
 	    <!-- Logo and menu wrapper -->
 		<div class="logo-menu-wrapper">
-			<img id="logo" src="<?php echo home_url('assets/logo_sti_new.png') ?>" alt="Logo">
-			<div class="menu-toggler">
-                <i class="fas fa-bars"></i>
-			</div>
+			<div class="logo"><a href="<?php echo home_url(); ?>"><img id="logo" src="<?php echo get_template_directory_uri() .'/img/logo.jpg' ?>" alt="Logo"></a></div>
 			<div class="menu">
 				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>
+			</div>
+			<div class="menu-toggler">
+                <i class="fas fa-bars"></i>
 			</div>
 		</div>
 		<!-- Logo and menu wrapper -->

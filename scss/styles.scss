@@ -1,19 +1,22 @@
 @import './_variables.scss';
-@import './partials/_fonts.scss';
 @import './mixins/_responsive.scss';
 @import './mixins/_socials.scss';
 @import './mixins/_transition.scss';
 @import './mixins/_fa_icon.scss';
 @import './mixins/_transform.scss';
+@import './mixins/_ellipsis-multiline.scss';
+@import './partials/_grid.scss';
 @import './partials/_header.scss';
 @import './partials/_footer.scss';
 @import './partials/_card.scss';
 @import './partials/_article.scss';
+@import './partials/_seminary.scss';
 @import './partials/_tables.scss';
 
 @import './pages/_homepage.scss';
+@import './pages/_teachers.scss';
 @import './pages/_bulletin-board.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 
 body {
     // font-family: 'Helvetica Neue', sans-serif;
@@ -44,7 +47,8 @@ body {
         }
 
         &:hover {
-            color: lighten($accent, 10);
+            text-decoration: underline;
+            color: $accent;
         }
     }
 
@@ -69,8 +73,9 @@ body {
         @include respond-to(xs) {
             padding-top: 60px;
         }
+
         @include respond-to(from-sm) {
-            padding-top: 110px;
+            padding-top: #{$navBarHeight + 30px};
         }
     }
 
@@ -100,9 +105,69 @@ body {
         padding: 0;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        > a {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        >a {
             font-weight: $fontWeightBold;
+        }
+    }
+
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        line-height: 1.4;
+        font-weight: $fontWeightBold;
+    }
+
+    h1,
+    .h1 {
+        font-size: 30px;
+        margin-bottom: 15px;
+
+        @include respond-to(md) {
+            font-size: 28px;
+        }
+
+        @include respond-to(upto-sm) {
+            font-size: 26px;
+        }
+    }
+
+    h2,
+    .h2,
+    h3,
+    .h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+
+        @include respond-to(upto-sm) {
+            font-size: 22px;
+        }
+    }
+
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        font-size: 20px;
+
+        @include respond-to(upto-sm) {
+            font-size: 18px;
         }
     }
 }

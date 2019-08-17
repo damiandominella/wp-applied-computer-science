@@ -14,6 +14,7 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<span class="blog-name"><?php echo get_bloginfo();?></span>
 	</header><!-- .entry-header -->
 
 	<?php //applied_computer_science_post_thumbnail(); ?>
