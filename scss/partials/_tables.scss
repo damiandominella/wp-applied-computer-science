@@ -14,21 +14,21 @@ table {
                 font-weight: $fontWeightBold;
                 color: $grey;
                 text-align: left;
-                font-size: 10px;
+                font-size: 12px;
                 padding: 15px;
                 text-transform: uppercase;
 
-                ::first-line {
-                    font-size: 10px;
-                }
+                // ::first-line {
+                //     font-size: 10px;
+                // }
             }
         }
     }
 
     tbody {
         tr {
-            &:nth-child(even) {
-                background: #f7f7f7;
+            &:nth-child(odd) {
+                background: #f5f5f5;
             }
 
             th {
@@ -38,6 +38,22 @@ table {
             td {
                 font-size: 12px;
                 padding: 15px;
+            }
+        }
+    }
+}
+
+// page Laboratorio Informatico
+.rules {
+    table {
+        tbody {
+            tr {
+                td {
+                    padding: 15px;
+                    background: #f5f5f5;
+                    border-radius: $borderRadius;
+                    font-size: 13px;
+                }
             }
         }
     }

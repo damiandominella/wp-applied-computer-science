@@ -114,6 +114,12 @@ function applied_computer_science_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'applied_computer_science_scripts' );
 
+
+// Custom post types
+require_once('custom-post-types/bulletin_board.php');
+require_once('custom-post-types/seminars.php');
+
+
 function get_main_menu($lang = 'IT') {
 	// display the wp3 menu if available
     wp_nav_menu(array( 

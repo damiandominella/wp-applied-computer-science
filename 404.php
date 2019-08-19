@@ -12,10 +12,13 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+		<div class="container">
+
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'applied-computer-science' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( '404 - Page not found.', 'applied-computer-science' ); ?></h1>
+					<span class="blog-name"><?php echo get_bloginfo();?></span>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
@@ -53,6 +56,7 @@ get_header();
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
+</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

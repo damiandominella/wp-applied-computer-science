@@ -33,6 +33,11 @@ body {
         @include socials($topbarHeight);
     }
 
+    b,
+    strong {
+        font-weight: $fontWeightBold;
+    }
+
     a {
         font-weight: $fontWeightRegular;
         color: $accent;
@@ -135,7 +140,7 @@ body {
     h1,
     .h1 {
         font-size: 30px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
 
         @include respond-to(md) {
             font-size: 28px;
@@ -147,7 +152,15 @@ body {
     }
 
     h2,
-    .h2,
+    .h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+
+        @include respond-to(upto-sm) {
+            font-size: 24px;
+        }
+    }
+    
     h3,
     .h3 {
         font-size: 24px;
@@ -168,6 +181,21 @@ body {
 
         @include respond-to(upto-sm) {
             font-size: 18px;
+        }
+    }
+
+
+    div.post-info {
+        color: $grey;
+        font-size: 12px;
+        >span {
+            &.date {}
+
+            &.author {}
+
+            &.expiry {
+
+            }
         }
     }
 }

@@ -28,12 +28,6 @@ header#header {
                 display: none;
             }
 
-            >div.logo {
-                a {
-                    display: flex;
-                }
-            }
-
             >div.menu-toggler {
                 justify-self: end;
                 cursor: pointer;
@@ -56,10 +50,6 @@ header#header {
 
             >div.logo {
                 grid-row: 1;
-
-                a {
-                    display: flex;
-                }
             }
 
             >div.menu-toggler {
@@ -67,6 +57,12 @@ header#header {
             }
         }
 
+        >div.logo {
+            img {
+                position: relative;
+                top: 3px;
+            }
+        }
 
         >div.menu {
             height: $navBarHeight;
@@ -210,6 +206,9 @@ header#header {
 
         &.open {
             right: 0;
+            >div.topbar {
+                right: 0;
+            }
         }
 
         >div.menu-toggler {
@@ -226,11 +225,9 @@ header#header {
 
         >div.menu {
             top: 59px; // 1px border
-            position: fixed;
             width: 100%;
             overflow: scroll;
             border-top: 1px solid $lightGrey;
-            height: calc(100vh - 60px - #{$topbarHeight});
 
             >ul {
                 padding: 0;
@@ -291,11 +288,12 @@ header#header {
         }
 
         >div.topbar {
+            @include _transition(right 0.4s);
             height: $topbarHeight;
             background: $accent;
-            position: absolute;
+            position: fixed;
             bottom: 0;
-            right: 0;
+            right: -100%;
             width: 100%;
         }
 
@@ -328,8 +326,10 @@ main {
                 width: 100%;
 
                 h1 {
+                    width: 80%;
                     font-size: 15px;
                     margin-top: 12px;
+                    word-break: break-all;
                     @include _ellipsis-multiline(1, 20px)
                 }
 

@@ -20,16 +20,6 @@ div.card {
         }
     }
 
-    >.info {
-        color: $grey;
-        font-size: 12px;
-        >span {
-            &.date {}
-
-            &.author {}
-        }
-    }
-
     >.content {
         font-size: 15px;
         word-break: break-word;

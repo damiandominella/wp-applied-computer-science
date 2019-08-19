@@ -20,20 +20,6 @@ div.article {
         }
     }
 
-    >.info {
-        color: $grey;
-        font-size: 12px;
-        >span {
-            &.date {}
-
-            &.author {}
-
-            &.expiry {
-
-            }
-        }
-    }
-
     >.tags {
         margin-top: 5px;
         font-size: 11px;

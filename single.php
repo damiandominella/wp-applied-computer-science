@@ -19,12 +19,16 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			the_post_navigation();
+			if (get_post_type() === 'bulletin_board' || get_post_type() === 'seminars') {
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+			} else {
+				the_post_navigation();
+
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
+			}
 
 		endwhile; // End of the loop.
 		?>
@@ -33,5 +37,4 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
