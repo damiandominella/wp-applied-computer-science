@@ -15,7 +15,7 @@
 
 	<footer id="footer" class="site-footer">
 		<div class="copyright">
-			<p>&copy; <?php echo date('Y'); ?> | Developed with <i class="fas fa-heart"></i> by <a href="#">Damian Dominella</a></p>
+			<p>&copy; <?php echo date('Y'); ?> | Developed with <i class="fas fa-heart"></i> by <a target="_blank" href="https://github.com/damiandominella">Damian Dominella</a></p>
 		</div>
 	</footer><!-- #footer -->
 </div><!-- #page -->

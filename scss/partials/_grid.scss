@@ -1,77 +1,112 @@
 // Grid template to maintain content cms 
-.row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 0;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(12, 1fr [col-start]);
-}
-
-@mixin grid-props($col) {
-    @for $i from 1 through 11 {
-        &:nth-child(#{$i}) {
-            grid-column-start: #{($i - 1) * $col + 1};
-        }
+.container {
+    .row {
+        margin: 0 -10px;
     }
 }
 
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 0;
+}
+
 .col {
-    padding: 0 10px;
-    grid-row: 1;
-    grid-column-start: 1;
+    padding: 0 10px; // define padding
+
+    &:first-child {
+        grid-column-start: 1;
+    }
 
     &.col-1 {
         grid-column-end: span 1;
-        @include grid-props(1);
     }
 
     &.col-3 {
         grid-column-end: span 3;
-        @include grid-props(3);
     }
 
     &.col-4 {
         grid-column-end: span 4;
-        @include grid-props(4);
     }
 
     &.col-5 {
         grid-column-end: span 5;
-        @include grid-props(5);
     }
 
     &.col-6 {
         grid-column-end: span 6;
-        @include grid-props(6);
     }
 
     &.col-7 {
         grid-column-end: span 7;
-        @include grid-props(7);
     }
 
     &.col-8 {
         grid-column-end: span 8;
-        @include grid-props(8);
     }
 
     &.col-9 {
         grid-column-end: span 9;
-        @include grid-props(9);
     }
 
     &.col-10 {
         grid-column-end: span 10;
-        @include grid-props(10);
     }
 
     &.col-11 {
         grid-column-end: span 11;
-        @include grid-props(11);
     }
 
     &.col-12 {
         grid-column-end: span 12;
-        @include grid-props(12);
+    }
+
+    @include respond-to(sm) {
+        &.col-1 {
+            grid-column-end: span 2;
+        }
+        &.col-2 {
+            grid-column-end: span 3;
+        }
+        &.col-3 {
+            grid-column-end: span 4;
+        }
+        &.col-4 {
+            grid-column-end: span 6;
+        }
+        &.col-5,
+        &.col-6,
+        &.col-7,
+        &.col-8,
+        &.col-9,
+        &.col-10,
+        &.col-11,
+        &.col-12 {
+            grid-column-end: span 12;
+        }
+    }
+
+    @include respond-to(xs) {
+        &.col-1 {
+            grid-column-end: span 2;
+        }
+        &.col-2 {
+            grid-column-end: span 4;
+        }
+        &.col-3 {
+            grid-column-end: span 6;
+        }
+        &.col-4,
+        &.col-5,
+        &.col-6,
+        &.col-7,
+        &.col-8,
+        &.col-9,
+        &.col-10,
+        &.col-11,
+        &.col-12 {
+            grid-column-end: span 12;
+        }
     }
 }

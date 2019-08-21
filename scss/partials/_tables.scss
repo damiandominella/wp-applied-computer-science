@@ -3,7 +3,6 @@ table {
     width: 100%;
 
     th, td {
-        width: calc(100% / 6);
         overflow: hidden;
     }
 
@@ -14,7 +13,7 @@ table {
                 font-weight: $fontWeightBold;
                 color: $grey;
                 text-align: left;
-                font-size: 12px;
+                font-size: 14px;
                 padding: 15px;
                 text-transform: uppercase;
 
@@ -32,12 +31,31 @@ table {
             }
 
             th {
-                font-size: 12px;
+                font-size: 13px;
                 padding: 15px;
             }
             td {
-                font-size: 12px;
+                font-size: 13px;
                 padding: 15px;
+
+                h1, h2, h3, h4, h5, h6 {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    // Maintain old styles
+    &.tab-list {
+        border-collapse: collapse;
+        border-spacing: 0;
+    
+        tbody {
+            tr {
+                background: inherit;
+                td {
+                    padding: 8px 0;
+                }
             }
         }
     }

@@ -98,9 +98,6 @@ function applied_computer_science_scripts() {
 	wp_enqueue_style( 'applied-computer-science-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'applied-computer-science-css', get_template_directory_uri() . '/css/styles.min.css');
 
-	// wp_enqueue_script( 'applied-computer-science-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-	// wp_enqueue_script( 'applied-computer-science-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-	
 	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'applied-computer-science-js', get_template_directory_uri() . '/js/applied-computer-science.js');
 
@@ -172,6 +169,49 @@ function get_last_bulletin_posts( $atts ){
 }
 add_shortcode( 'last_bulletin_posts', 'get_last_bulletin_posts' );
 
+function get_latests_posts($atts) {
+    
+    extract(shortcode_atts(array(
+        'cat_id' => '',
+        'num_posts' => 2
+    ), $atts));
+    
+    $args = array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'showposts' => $num_posts,
+    );
+    
+    if (@$category_id) {
+        $args['category_id'] = $cat_id;
+    }
+    
+    query_posts($args);
+    
+    $ret = '';
+    if (have_posts()) {
+        $ret .= '<ul class="latests-posts">';
+        
+        while (have_posts()) {
+            the_post();
+            
+            $ret .= '<li>'
+                      . '<h3><a href="' . get_permalink() . '">'
+                          . get_the_title()
+                      . '</a></h3>'
+                      . get_the_excerpt()
+                  . '</li>' . "\r\n";
+        }
+        
+        $ret .= '</ul>';
+    }
+    
+    wp_reset_query();
+    
+    return $ret;
+}
+add_shortcode('latests_posts', 'get_latests_posts');
+
 function get_bulletin_board() {
 
 	$query = new WP_Query(array(
@@ -240,7 +280,7 @@ function sti_comment_shortcode($atts, $content) {
 add_shortcode('comment', 'sti_comment_shortcode');
 
 
-function sti_col_shortcode($atts, $content) {
+function col_shortcode($atts, $content) {
     
     extract(shortcode_atts(array(
         'n' => '4',
@@ -256,13 +296,10 @@ function sti_col_shortcode($atts, $content) {
             
     return $div . do_shortcode(wpautop($content)) . '</div>';
 }
-add_shortcode('col', 'sti_col_shortcode');
+add_shortcode('col', 'col_shortcode');
 
 
-function sti_row_shortcode($atts, $content) {
-        
-    // $content = str_replace(array("<br />", "<br>", "<p></p>"), '', $content);
-    
+function row_shortcode($atts, $content) {    
     return '<div class="row">' . do_shortcode($content) . '</div>';
 }
-add_shortcode('row', 'sti_row_shortcode');
+add_shortcode('row', 'row_shortcode');

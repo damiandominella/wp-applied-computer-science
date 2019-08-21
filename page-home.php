@@ -27,9 +27,7 @@ if (have_posts()) the_post();
         
     </div>
     <div class="container">
-        <div class="grid">
-            <?php the_content(); ?>
-        </div>
+        <?php the_content(); ?>
     </div>
 </div>
 

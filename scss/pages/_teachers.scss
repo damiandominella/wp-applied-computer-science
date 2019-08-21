@@ -2,7 +2,10 @@
     .row {
         .col {
             h3 {
-                font-size: 18px;
+                font-size: 16px;
+                height: 25px;
+                margin-bottom: 10px;
+                display: block;
             }
             img {
                 border-radius: $borderRadius;
