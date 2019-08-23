@@ -88,6 +88,16 @@ function applied_computer_science_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	
+	register_sidebar( array(
+		'name' => esc_html__( 'Footer', 'applied-computer-science' ),
+		'id' => 'footer',
+		'description' => esc_html__( 'Add widgets here.', 'applied-computer-science' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s col col-6">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+		) );
 }
 add_action( 'widgets_init', 'applied_computer_science_widgets_init' );
 
@@ -115,6 +125,7 @@ add_action( 'wp_enqueue_scripts', 'applied_computer_science_scripts' );
 // Custom post types
 require_once('custom-post-types/bulletin_board.php');
 require_once('custom-post-types/seminars.php');
+require_once('custom-post-types/teachers.php');
 
 
 function get_main_menu($lang = 'IT') {
@@ -273,7 +284,43 @@ function get_seminars() {
 }
 add_shortcode('seminars', 'get_seminars');
 
-// Fallback functions for retrocompatibility
+function get_teachers($atts) {
+	$a = shortcode_atts( array(
+		'special' => false,
+	), $atts );
+
+	$isSpecial = (bool)$a['special'];
+
+	$queryParams = array(
+		'post_type' => 'teachers',
+		'posts_per_page' => -1,
+		'meta_query' => array(
+			array(
+				'key ' => 'is_special',
+				'value' => $isSpecial ? '1' : '0'
+			)
+		)
+	);
+
+    $query = new WP_Query($queryParams);
+
+	$class = $isSpecial ? 'special' : '';
+	$output = '<div class="teachers row ' . $class . '">';
+
+	while ( $query->have_posts() ) :
+		ob_start();
+		$query->the_post();
+		include 'template-parts/teacher.php';
+		$output .= ob_get_contents();
+		ob_end_clean();
+	endwhile;
+
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode('teachers', 'get_teachers');
+
 function sti_comment_shortcode($atts, $content) {
     return '';
 }

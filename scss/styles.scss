@@ -102,6 +102,10 @@ body {
         @include respond-to(from-md) {
             max-width: 920px;
         }
+
+        @include respond-to(from-lg) {
+            max-width: 1000px;
+        }
     }
 
     ul {
@@ -197,5 +201,15 @@ body {
 
             }
         }
+    }
+
+    iframe {
+        max-width: 100%;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .widget {
+        margin: 0;
     }
 }

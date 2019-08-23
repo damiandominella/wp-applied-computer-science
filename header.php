@@ -14,7 +14,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 
 	<?php wp_head(); ?>
 </head>
@@ -23,18 +23,8 @@
 
 <div id="page" class="site">
 	<header id="header" class="site-header">
-		<!-- Topbar (for socials etc...) -->
-		<div class="topbar">
-			<ul class="socials">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-skype"></i></a></li>
-                <li><a href="#"><i class="fab fa-foursquare"></i></a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="#"><i class="fas fa-rss"></i></a></li>
-            </ul>
-		</div>
-		<!-- Topbar -->
+		
+		<?php include ('template-parts/social-bar.php'); ?>
 
 	    <!-- Logo and menu wrapper -->
 		<div class="logo-menu-wrapper">
@@ -48,8 +38,8 @@
 		</div>
 		<!-- Logo and menu wrapper -->
 
-		<!-- Sidebar menu (for mobile) -->
-		<div class="sidebar-menu">
+		<!-- Sidebar (for mobile) -->
+		<div class="sidebar">
 			<h1><?php echo get_bloginfo();?></h1>
 			<div class="menu-toggler">
                 <i class="fas fa-bars"></i>
@@ -57,18 +47,8 @@
 			<div class="menu">
 				<?php get_main_menu(); // Adjust using Menus in Wordpress Admin ?>
 			</div>
-			<!-- Topbar (for socials etc...) -->
-			<div class="topbar">
-				<ul class="socials">
-             	   <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-             	   <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-             	   <li><a href="#"><i class="fab fa-skype"></i></a></li>
-             	   <li><a href="#"><i class="fab fa-foursquare"></i></a></li>
-              	  <li><a href="#"><i class="fas fa-envelope"></i></a></li>
-              	  <li><a href="#"><i class="fas fa-rss"></i></a></li>
-            	</ul>
-			</div>
-		<!-- Topbar -->
+
+			<?php include ('template-parts/social-bar.php'); ?>
 		</div>
 		<!-- Sidebar menu -->
 

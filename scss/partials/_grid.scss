@@ -5,12 +5,15 @@
     }
 }
 
+.grid,
 .row {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 0;
+    grid-row-gap: 15px;
 }
 
+.grid-item,
 .col {
     padding: 0 10px; // define padding
 
@@ -72,11 +75,12 @@
         &.col-3 {
             grid-column-end: span 4;
         }
-        &.col-4 {
+        &.col-4,
+        &.col-5,
+        &.col-6 {
             grid-column-end: span 6;
         }
-        &.col-5,
-        &.col-6,
+       
         &.col-7,
         &.col-8,
         &.col-9,

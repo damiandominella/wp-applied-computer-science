@@ -10,12 +10,17 @@ jQuery(window).on("load", function () {
 
 jQuery(document).ready(function () {
 
-    jQuery('div.menu-toggler').on("click", function () {
-        jQuery('div.sidebar-menu').addClass('open');
+    jQuery('div.logo-menu-wrapper>div.menu-toggler').on("click", function () {
+        jQuery('div.sidebar').addClass('open');
+
+        setTimeout(function() {
+            jQuery('#content').css('overflow', 'hidden'); // disable scroll
+        }, 300)
     });
 
-    jQuery('div.sidebar-menu>div.menu-toggler').on("click", function () {
-        jQuery('div.sidebar-menu').removeClass('open');
+    jQuery('div.sidebar>div.menu-toggler').on("click", function () {
+        jQuery('div.sidebar').removeClass('open');
+        jQuery('#content').css('overflow', 'inherit'); // enable scroll
     });
 
     jQuery('ul>li.menu-item-has-children').on("click", function (event) {

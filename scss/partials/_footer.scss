@@ -3,13 +3,62 @@ footer#footer {
     color: $textOnPrimary;
     margin-top: 60px;
 
+    > div.prefooter {
+        padding: 30px 0;
+        .container {
+            h3.widget-title {
+                margin: 0 0 10px;
+                font-size: 14px;
+            }
+            ul {
+                li {
+                    word-break: break-word;
+                    font-size: 12px;
+                    margin-bottom: 4px;
+                    a {
+                        color: $darkGrey;
+                        display: block;
+                    }
+                    &:hover {
+                        a {
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+
+            .custom-html-widget {
+                color: $darkGrey;
+                p {
+                    font-size: 12px;
+                    margin: 0;
+                }
+                a {
+                    font-size: 12px;
+                    display: block;
+                }
+            }
+        }
+    }
+
     > div.copyright {
+        background: darken($primary, 8%);
         font-weight: $fontWeightLight;
         text-align: center;
-        padding: 20px 0;
+        padding: 15px 0;
         p {
-            font-size: 10px;
+            font-size: 8px;
             margin: 0;
+            i {
+                color: $accent;
+            }
+            a {
+                color: $textOnPrimary;
+                &:hover {
+                    color: $grey;
+                    text-decoration: none;
+                }
+            }
         }
     }
 
