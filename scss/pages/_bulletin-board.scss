@@ -1,6 +1,5 @@
 .bulletin-board {
     display: grid;
-    grid-gap: 30px 0;
     > div.article {
         grid-column: 1;
     }

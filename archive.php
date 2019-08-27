@@ -50,7 +50,7 @@ get_header();
 				get_template_part( 'template-parts/article', get_post_type() );
 			endwhile;
 
-			the_posts_navigation();
+			page_navigation();
 
 		else :
 
@@ -63,5 +63,5 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

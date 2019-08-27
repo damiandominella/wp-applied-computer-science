@@ -145,7 +145,58 @@ function get_main_menu($lang = 'IT') {
 	));
 }
 
-// Shortcodes
+// Numeric Page Navigation
+function page_navigation($before = '', $after = '') {
+	global $wpdb, $wp_query;
+	$request = $wp_query->request;
+	$posts_per_page = intval(get_query_var('posts_per_page'));
+	$paged = intval(get_query_var('paged'));
+	$numposts = $wp_query->found_posts;
+	$max_page = $wp_query->max_num_pages;
+	if ( $numposts <= $posts_per_page ) { return; }
+	if(empty($paged) || $paged == 0) {
+		$paged = 1;
+	}
+	$pages_to_show = 3;
+	$pages_to_show_minus_1 = $pages_to_show-1;
+	$half_page_start = floor($pages_to_show_minus_1/2);
+	$half_page_end = ceil($pages_to_show_minus_1/2);
+	$start_page = $paged - $half_page_start;
+	if($start_page <= 0) {
+		$start_page = 1;
+	}
+	$end_page = $paged + $half_page_end;
+	if(($end_page - $start_page) != $pages_to_show_minus_1) {
+		$end_page = $start_page + $pages_to_show_minus_1;
+	}
+	if($end_page > $max_page) {
+		$start_page = $max_page - $pages_to_show_minus_1;
+		$end_page = $max_page;
+	}
+	if($start_page <= 0) {
+		$start_page = 1;
+	}
+	echo $before.'<nav class="page-navigation"><ul>'."";
+	if ($start_page >= 2 && $pages_to_show < $max_page) {
+		echo '<li class="first-page-link"><a href="'.get_pagenum_link().'" title="1">1</a></li><li class="dots">...</li>';
+	}
+	for($i = $start_page; $i  <= $end_page; $i++) {
+		if($i == $paged) {
+			echo '<li class="current"><span>'.$i.'</span></li>';
+		} else {
+			echo '<li><a href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
+		}
+	}
+	if ($end_page < $max_page) {
+		if ($end_page < ($max_page - 2)) {
+			echo '<li class="dots">...</li>';
+		}
+		echo '<li class="last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$max_page.'">'.$max_page.'</a></li>';
+	}
+	echo '</ul></nav>'.$after."";
+}
+
+// ------------- Shortcodes -------------
 function get_last_bulletin_posts( $atts ){
 	$a = shortcode_atts( array(
 		'num_posts' => '5',
@@ -350,3 +401,12 @@ function row_shortcode($atts, $content) {
     return '<div class="row">' . do_shortcode($content) . '</div>';
 }
 add_shortcode('row', 'row_shortcode');
+
+function get_content_shortcode($atts) {
+    extract(shortcode_atts(array(
+        'url' => '',
+    ), $atts));
+	
+	echo '<script type="text/javascript">location.href = "'. $url .'";</script>';
+}
+add_shortcode('get_content', 'get_content_shortcode');

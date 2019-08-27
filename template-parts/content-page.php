@@ -13,7 +13,9 @@
 <div class="container">
 
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<h1 class="entry-title"><?php the_title(); ?><?php if (get_post_type() === 'bulletin_board') { ?> 
+			<a class="rss-link" href="<?php bloginfo('rss2_url'); ?>?post_type[]=bulletin_board"><i class="fas fa-rss"></i></a>
+		<?php } ?></h1>
 		<span class="blog-name"><?php echo get_bloginfo();?></span>
 	</header><!-- .entry-header -->
 

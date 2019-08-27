@@ -10,6 +10,8 @@
 ?>
 
 <section class="no-results not-found">
+<div class="container">
+
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'applied-computer-science' ); ?></h1>
 		<span class="blog-name"><?php echo get_bloginfo();?></span>
@@ -49,4 +51,5 @@
 		endif;
 		?>
 	</div><!-- .page-content -->
+	</div>
 </section><!-- .no-results -->

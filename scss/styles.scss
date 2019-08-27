@@ -12,6 +12,7 @@
 @import './partials/_article.scss';
 @import './partials/_seminary.scss';
 @import './partials/_tables.scss';
+@import './partials/_page-navigation.scss';
 
 @import './pages/_homepage.scss';
 @import './pages/_teachers.scss';
@@ -19,7 +20,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 
 body {
-    // font-family: 'Helvetica Neue', sans-serif;
     font-family: 'Montserrat', sans-serif;
 
     font-weight: $fontWeightLight;
@@ -109,9 +109,8 @@ body {
     }
 
     ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        margin: 0 0 0 10px;
+        padding: 0 0 0 10px;
     }
 
     h1,
@@ -143,35 +142,31 @@ body {
 
     h1,
     .h1 {
-        font-size: 30px;
-        margin-bottom: 10px;
-
-        @include respond-to(md) {
-            font-size: 28px;
-        }
-
-        @include respond-to(upto-sm) {
-            font-size: 26px;
-        }
-    }
-
-    h2,
-    .h2 {
-        font-size: 26px;
+        font-size: 28px;
         margin-bottom: 10px;
 
         @include respond-to(upto-sm) {
             font-size: 24px;
         }
     }
-    
-    h3,
-    .h3 {
+
+    h2,
+    .h2 {
         font-size: 24px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
 
         @include respond-to(upto-sm) {
             font-size: 22px;
+        }
+    }
+    
+    h3,
+    .h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+
+        @include respond-to(upto-sm) {
+            font-size: 18px;
         }
     }
 
@@ -181,10 +176,10 @@ body {
     .h5,
     h6,
     .h6 {
-        font-size: 20px;
+        font-size: 18px;
 
         @include respond-to(upto-sm) {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 

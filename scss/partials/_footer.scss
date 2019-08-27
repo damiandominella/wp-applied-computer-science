@@ -3,22 +3,33 @@ footer#footer {
     color: $textOnPrimary;
     margin-top: 60px;
 
-    > div.prefooter {
+    >div.prefooter {
         padding: 30px 0;
+
         .container {
+            .row {
+                grid-row-gap: 30px;
+            }
+
             h3.widget-title {
                 margin: 0 0 10px;
                 font-size: 14px;
             }
+
             ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
                 li {
                     word-break: break-word;
-                    font-size: 12px;
+                    font-size: 13px;
                     margin-bottom: 4px;
+
                     a {
                         color: $darkGrey;
                         display: block;
                     }
+
                     &:hover {
                         a {
                             color: $grey;
@@ -29,31 +40,50 @@ footer#footer {
 
             .custom-html-widget {
                 color: $darkGrey;
+
                 p {
-                    font-size: 12px;
+                    font-size: 13px;
                     margin: 0;
                 }
+
                 a {
-                    font-size: 12px;
+                    font-size: 13px;
                     display: block;
+                }
+            }
+
+            @include respond-to(xs) {
+                ul {
+                    li {
+                        font-size: 12px;
+                    }
+                }
+                .custom-html-widget {    
+                    p, a {
+                        font-size: 12px;
+                    }
                 }
             }
         }
     }
 
-    > div.copyright {
+    >div.copyright {
         background: darken($primary, 8%);
         font-weight: $fontWeightLight;
         text-align: center;
         padding: 15px 0;
+
         p {
-            font-size: 8px;
+            font-size: 9px;
             margin: 0;
+
             i {
                 color: $accent;
             }
+
             a {
                 color: $textOnPrimary;
+
                 &:hover {
                     color: $grey;
                     text-decoration: none;

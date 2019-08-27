@@ -1,0 +1,53 @@
+nav.page-navigation {
+    margin: 40px 0 0;
+    text-align: center;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
+
+            a,
+            span {
+                font-size: 11px;
+                display: block;
+                font-weight: $fontWeightMedium;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                line-height: 25px;
+            }
+
+            a {
+                background: $lightGrey;
+                color: $textOnAccent;
+
+                &:hover {
+                    text-decoration: none;
+                    background: $grey;
+                }
+            }
+
+            &.current {
+                span {
+                    background: $accent;
+                    color: $textOnAccent;
+                }
+            }
+
+            &.dots {
+                color: $lightGrey;
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+}
