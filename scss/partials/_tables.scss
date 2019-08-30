@@ -1,44 +1,91 @@
+// Responsive tables for lectures
+div.table-wrapper {
+    @include respond-to(xs) {
+        width: calc(100vw - 20px);
+        overflow-x: auto;
+        table.lectures {
+            width: 750px;
+        }
+    }
+}
+
 table {
     table-layout: fixed;
     width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
 
-    th, td {
+    th,
+    td {
         overflow: hidden;
     }
 
     thead {
         tr {
             th {
+                &:first-child {
+                    border-top-left-radius: $borderRadius;
+                }
+                &:last-child {
+                    border-top-right-radius: $borderRadius;
+                }
+                text-align: left;
+                font-size: 12px;
                 border-bottom: 1px solid $lightGrey;
                 font-weight: $fontWeightBold;
                 color: $grey;
-                text-align: left;
-                font-size: 14px;
-                padding: 15px;
+                padding: 10px;
                 text-transform: uppercase;
+            }
+        }
 
-                // ::first-line {
-                //     font-size: 10px;
-                // }
+        &.dark {
+            background: $primary;
+            tr {
+                th {
+                    color: $lightGrey;
+                }
             }
         }
     }
 
     tbody {
         tr {
-            &:nth-child(odd) {
+            &:nth-child(even) {
                 background: #f5f5f5;
+            }
+
+            &:nth-child(odd) {
+                background: #e7e7e7;
+            }
+
+            &:last-child {
+                th, td {
+                    &:first-child {
+                        border-bottom-left-radius: $borderRadius;
+                    }
+                    &:last-child {
+                        border-bottom-right-radius: $borderRadius;
+                    }
+                }
             }
 
             th {
                 font-size: 13px;
-                padding: 15px;
+                padding: 10px;
+                font-weight: $fontWeightMedium;
             }
+
             td {
                 font-size: 13px;
-                padding: 15px;
+                padding: 10px;
 
-                h1, h2, h3, h4, h5, h6 {
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
                     font-size: 16px;
                 }
             }
@@ -49,12 +96,34 @@ table {
     &.tab-list {
         border-collapse: collapse;
         border-spacing: 0;
-    
+
         tbody {
             tr {
                 background: inherit;
+
                 td {
                     padding: 8px 0;
+                }
+            }
+        }
+    }
+
+    &.lectures {
+        thead {
+            tr {
+                th {
+                    font-size: 10px;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                th {
+                    font-size: 10px;
+                }
+                td {
+                    font-size: 12px;
                 }
             }
         }

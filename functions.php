@@ -196,13 +196,28 @@ function page_navigation($before = '', $after = '') {
 	echo '</ul></nav>'.$after."";
 }
 
+// ------------- Excerpt Fixes ----------
+function custom_excerpt_length( $length ) {
+	return 25;
+}
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+
+function custom_excerpt_more($more) {
+	global $post;
+	return '... <a class="read-more" href="'. get_permalink($post->ID) . '" title="Read '.get_the_title($post->ID).'">' . __('Read more', 'applied-computer-science') . '</a>';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+
 // ------------- Shortcodes -------------
 function get_last_bulletin_posts( $atts ){
 	$a = shortcode_atts( array(
 		'num_posts' => '5',
+		'show_content' => true
 	), $atts );
 
 	$num_posts = (int)$a['num_posts'];
+	$show_content = (bool)$a['show_content'];
 
 	$query = new WP_Query(array(
 		'post_type' => 'bulletin_board',
@@ -222,7 +237,7 @@ function get_last_bulletin_posts( $atts ){
 	while ( $query->have_posts() ) :
 		ob_start();
 		$query->the_post();
-		include 'template-parts/card.php';
+		include 'template-parts/post-preview.php';
 		$output .= ob_get_contents();
 		ob_end_clean();
 	endwhile;
@@ -232,45 +247,38 @@ function get_last_bulletin_posts( $atts ){
 add_shortcode( 'last_bulletin_posts', 'get_last_bulletin_posts' );
 
 function get_latests_posts($atts) {
-    
-    extract(shortcode_atts(array(
-        'cat_id' => '',
-        'num_posts' => 2
-    ), $atts));
-    
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'showposts' => $num_posts,
-    );
-    
-    if (@$category_id) {
-        $args['category_id'] = $cat_id;
-    }
-    
-    query_posts($args);
-    
-    $ret = '';
-    if (have_posts()) {
-        $ret .= '<ul class="latests-posts">';
-        
-        while (have_posts()) {
-            the_post();
-            
-            $ret .= '<li>'
-                      . '<h3><a href="' . get_permalink() . '">'
-                          . get_the_title()
-                      . '</a></h3>'
-                      . get_the_excerpt()
-                  . '</li>' . "\r\n";
-        }
-        
-        $ret .= '</ul>';
-    }
+
+	$a = shortcode_atts( array(
+		'cat_id' => '',
+		'num_posts' => '5',
+		'show_content' => true
+	), $atts );
+
+	$cat_id = (int)$a['cat_id'];
+	$num_posts = (int)$a['num_posts'];
+	$show_content = (bool)$a['show_content'];
+
+	$query = new WP_Query(array(
+		'post_type' => 'post',
+		'posts_per_page' => $num_posts,
+		'cat' => $cat_id,
+		'order' => 'DESC',
+		'orderby' => 'date'
+	));
+	
+	$output = '';
+	
+	while ($query->have_posts() ) :
+		ob_start();
+		$query->the_post();
+		include 'template-parts/post-preview.php';
+		$output .= ob_get_contents();
+		ob_end_clean();
+	endwhile;
     
     wp_reset_query();
     
-    return $ret;
+    return $output;
 }
 add_shortcode('latests_posts', 'get_latests_posts');
 

@@ -25,7 +25,6 @@
 
 	<?php //applied_computer_science_post_thumbnail(); ?>
 
-<?php if (get_post_type(get_the_ID()) === 'bulletin_board') {?>
 	<div class="post-info">
         <span class="date"><time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_time(pll__('j F Y')); ?></time></span>
         |
@@ -33,13 +32,15 @@
 
         <?php if (get_field('expiry_date')) { ?> 
             |
-        <?php $date = DateTime::createFromFormat('Ymd', get_field('expiry_date')); ?>
-        <span class="expiry">
-        <?php _e("Scadenza", "applied-computer-science"); ?> <?php echo " " . date_i18n(pll__('j F Y'), $date->getTimestamp()); ?>
-        </span>
+			<?php $date = DateTime::createFromFormat('Ymd', get_field('expiry_date')); ?>
+			<span class="expiry">
+			<?php _e("Scadenza", "applied-computer-science"); ?> <?php echo " " . date_i18n(pll__('j F Y'), $date->getTimestamp()); ?>
+			</span>
         <?php } ?>
+	</div>
+	<div class="tags">
+        <?php the_tags('', ' / ') ?>
     </div>
-		<?php } ?>
 	<div class="entry-content">
 		<?php
 		the_content();

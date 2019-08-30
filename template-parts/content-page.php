@@ -13,7 +13,7 @@
 <div class="container">
 
 	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?><?php if (get_post_type() === 'bulletin_board') { ?> 
+		<h1 class="entry-title"><?php the_title(); ?><?php if (get_the_ID() === 106) { ?> 
 			<a class="rss-link" href="<?php bloginfo('rss2_url'); ?>?post_type[]=bulletin_board"><i class="fas fa-rss"></i></a>
 		<?php } ?></h1>
 		<span class="blog-name"><?php echo get_bloginfo();?></span>

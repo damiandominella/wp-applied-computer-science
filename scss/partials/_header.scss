@@ -1,7 +1,7 @@
 header#header {
     >div.topbar {
         height: $topbarHeight;
-        background: $primary;
+        background: darken($primary, 8%);
         position: fixed;
         top: 0;
         width: 100%;
@@ -151,6 +151,8 @@ header#header {
                         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.30);
 
                         li {
+                            overflow: hidden;
+
                             &:first-child {
                                 border-top-left-radius: $borderRadius;
                                 border-top-right-radius: $borderRadius;
@@ -366,6 +368,62 @@ header#header {
         }
 
     }
+
+    &.dark {
+        >div.logo-menu-wrapper {
+            background: $primary;
+            border-color: $darkGrey;
+
+            >div.menu {
+                >ul {
+                    li {
+                        &.menu-item-has-children {
+                            &::after {
+                                color: $textOnPrimary;
+                            }
+
+                            &.hover {
+                                background: darken($primary, 8%);
+
+                                >a {
+                                    border-color: $darkGrey;
+                                }
+                            }
+                        }
+
+                        a {
+                            color: $textOnPrimary;
+                        }
+
+                        ul.sub-menu {
+                            background: $primary;
+
+                            li {
+                                a {
+                                    &:hover {
+                                        background: darken($primary, 8%);
+                                    }
+                                }
+
+                                // all sub sub menus
+                                ul.sub-menu {
+                                    border-color: $darkGrey;
+                                    background: darken($primary, 10%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            &.scrolling {
+                @include respond-to(from-sm) {
+                    background: $primary;
+                }
+            }
+        }
+    }
 }
 
 main {
@@ -398,7 +456,12 @@ main {
                     font-size: 15px;
                     margin-top: 12px;
                     word-break: break-all;
-                    @include _ellipsis-multiline(1, 20px)
+
+                    @include _ellipsis-multiline(1, 20px) a.rss-link {
+                        i {
+                            font-size: 12px;
+                        }
+                    }
                 }
 
                 span.blog-name {
@@ -412,6 +475,14 @@ main {
             padding-bottom: 20px;
             margin-bottom: 20px;
             border-bottom: 1px solid $lightGrey;
+
+            a.rss-link {
+                i {
+                    font-size: 16px;
+                    position: relative;
+                    top: -1px;
+                }
+            }
         }
 
         span.blog-name {

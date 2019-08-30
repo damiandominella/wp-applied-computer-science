@@ -1,0 +1,26 @@
+div.post-preview {
+
+    border-top: 1px solid $lightGrey;
+    padding-top: 15px;
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    >.title {
+        font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 0;
+        a {
+            color: $primary;
+            font-weight: $fontWeightMedium;
+            &:hover {
+                color: $accent;
+            }
+        }
+    }
+
+    >.content {
+        font-size: 14px;
+        word-break: break-word;
+    }
+}

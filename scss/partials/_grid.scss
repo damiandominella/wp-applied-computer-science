@@ -69,18 +69,21 @@
         &.col-1 {
             grid-column-end: span 2;
         }
+
         &.col-2 {
             grid-column-end: span 3;
         }
+
         &.col-3 {
             grid-column-end: span 4;
         }
+
         &.col-4,
         &.col-5,
         &.col-6 {
             grid-column-end: span 6;
         }
-       
+
         &.col-7,
         &.col-8,
         &.col-9,
@@ -89,18 +92,33 @@
         &.col-12 {
             grid-column-end: span 12;
         }
+
+        &.col-7 {
+            + .col-5 {
+                grid-column-end: span 12;
+            }
+        }
+
+        &.col-8 {
+            + &.col-4 {
+                grid-column-end: span 12;
+            }
+        }
     }
 
     @include respond-to(xs) {
         &.col-1 {
             grid-column-end: span 2;
         }
+
         &.col-2 {
             grid-column-end: span 4;
         }
+
         &.col-3 {
             grid-column-end: span 6;
         }
+
         &.col-4,
         &.col-5,
         &.col-6,
@@ -112,5 +130,32 @@
         &.col-12 {
             grid-column-end: span 12;
         }
+    }
+
+    &.accent {
+        border-radius: $borderRadius;
+        background-color: #f7f7f7;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.30);
+        margin-left: 20px;
+
+        div.post-preview {
+            >.title {
+                a {
+                    // color: $textOnPrimary;
+                    &:hover {
+                        // color: $accent;
+                    }
+                }
+            }
+        }
+
+        @include respond-to(upto-sm) {
+            margin-left: 0;
+        }
+
+        @include respond-to(xs) {
+            border-radius: 0;
+        }
+       
     }
 }
