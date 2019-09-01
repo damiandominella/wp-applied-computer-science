@@ -26,21 +26,21 @@ footer#footer {
                     margin-bottom: 4px;
 
                     a {
-                        color: $darkGrey;
+                        color: $grey;
                         display: block;
                         font-weight: $fontWeightLight;
                     }
 
                     &:hover {
                         a {
-                            color: $grey;
+                            color: $darkGrey;
                         }
                     }
                 }
             }
 
             .custom-html-widget {
-                color: $darkGrey;
+                color: $grey;
 
                 p {
                     font-size: 13px;
@@ -75,6 +75,7 @@ footer#footer {
         padding: 15px 0;
 
         p {
+            color: $grey;
             font-size: 9px;
             margin: 0;
 
@@ -83,10 +84,11 @@ footer#footer {
             }
 
             a {
+                font-weight: $fontWeightRegular;
                 color: $textOnPrimary;
 
                 &:hover {
-                    color: $grey;
+                    color: $accent;
                     text-decoration: none;
                 }
             }

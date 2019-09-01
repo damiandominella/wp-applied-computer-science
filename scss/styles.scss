@@ -215,5 +215,15 @@ body {
 
     .entry-content {
         word-break: break-word;
+
+        h2, h3, h4, h5, h6 {
+            font-weight: $fontWeightMedium !important;
+        }
+    }
+
+    // Exams pages
+
+    #t1, #t2, #t3 {
+        padding-top: 80px;
     }
 }
